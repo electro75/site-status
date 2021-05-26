@@ -10,8 +10,8 @@ func main() {
 		"http://google.com",
 		"http://facebook.com",
 		"http://golang.org",
-		"http://stackoverflow.com",
 		"http://amazon.com",
+		"http://stackoverflow.com",
 	}
 
 	for _, link := range links {
