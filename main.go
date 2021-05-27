@@ -14,17 +14,23 @@ func main() {
 		"http://stackoverflow.com",
 	}
 
+	c := make(chan string) // create a new channel of type string
+
 	for _, link := range links {
-		checkLink(link)
+		go checkLink(link, c) // create a new routine for a http call
 	}
+
+	fmt.Println(<-c)
 }
 
-func checkLink(link string) {
+func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link, "might be down :(")
+		c <- "might be down"
 		return
 	}
 
 	fmt.Println(link, "is up")
+	c <- "status: ok"
 }

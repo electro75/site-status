@@ -14,4 +14,11 @@
 
 - Every Go program runs on a main **Routine**
 - Whenever a routine encounters a blocking call (eg. http request) it stops and cannot do anything else.
-- This is when another routine can be launched to handle different part of the program. 
+- This is when another routine can be launched to handle different part of the program.
+- __Concurrency is not parallelism__ : in a single core CPU, even goroutines are executed in a somewhat serial order.
+- only making a new routine does not solve the problem: once new go routines are created, the main routine exits before the child routines are done with execution due to lack of communication between routines.
+- To resolve the above issue, __Channels__ are implemented.
+
+### Channels
+- They are used to communicate in between routines
+- Channels are typed. The type of data shared through a channel **must** be the same as the type of the channel.
