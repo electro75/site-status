@@ -22,3 +22,5 @@
 ### Channels
 - They are used to communicate in between routines
 - Channels are typed. The type of data shared through a channel **must** be the same as the type of the channel.
+- Channel calls are blocking operations.
+- A channel should be called everytime a go routine is done.
