@@ -25,8 +25,10 @@ func main() {
 	// for loop waits for channel to return a value
 	// the value returned by the channel is receivd by 'l'
 	for l := range c {
-		time.Sleep(time.Second * 3)
-		go checkLink(l, c)
+		go func(link string) { // anonymous functions are called 'function literals'
+			time.Sleep((5 * time.Second))
+			checkLink(link, c)
+		}(l)
 	}
 }
 
